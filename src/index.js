@@ -1,8 +1,9 @@
 import "./styles.css";
 import { createProjectModal } from "./ProjectModal";
-
+import addProjectTitle from "./projectTitlesUI";
 const btnAddProject = document.getElementById(`add-project`);
-console.log(btnAddProject);
+
+addProjectTitle("project 01")
 
 // hanlde the add new project
 btnAddProject.addEventListener("click", () => {
@@ -13,5 +14,4 @@ btnAddProject.addEventListener("click", () => {
   closeModal.addEventListener(`click`, () => {
     modalOverlay.classList.remove(`modal-overlay`);
   });
-//   console.log(modalOverlay);
 });
