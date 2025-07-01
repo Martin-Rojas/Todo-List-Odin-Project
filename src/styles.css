@@ -37,6 +37,11 @@ section {
   padding: 1rem;
 }
 
+section i{
+  cursor: pointer;
+  font-size: 2rem;
+}
+
 main {
   width: 80%;
   background-color: #e0e7ff; /* Secondary */

@@ -5,6 +5,7 @@ const content = document.getElementById(`content`);
 function createProjectModal() {
   const modalOverlay = document.createElement(`div`);
   modalOverlay.className = `modal-overlay`;
+  modalOverlay.setAttribute(`id`, `modal-overlay`);
 
   const divModal = document.createElement(`div`);
   divModal.className = `modal`;
@@ -38,7 +39,8 @@ function createProjectModal() {
   modalActions.appendChild(btnAddProject);
 
   const btnCancelProject = document.createElement(`button`);
-  btnCancelProject.setAttribute(`type`, `submit`);
+  btnCancelProject.setAttribute("id", `close-modal`);
+  btnCancelProject.setAttribute(`type`, `button`);
   btnCancelProject.className = `close-modal`;
   btnCancelProject.innerHTML = `Cancel`;
   modalActions.appendChild(btnCancelProject);
