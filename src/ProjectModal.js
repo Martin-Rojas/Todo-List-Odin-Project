@@ -24,8 +24,8 @@ function createProjectModal() {
 
   const inputProjectName = document.createElement(`input`);
   inputProjectName.setAttribute(`type`, `text`);
-  inputProjectName.setAttribute(`id`, `projectName`);
-  inputProjectName.setAttribute(`name`, `projectName`);
+  inputProjectName.setAttribute(`id`, `projectNameInput`);
+  inputProjectName.setAttribute(`name`, `projectNameInput`);
   inputProjectName.setAttribute(`required`, ``);
   form.appendChild(inputProjectName);
 
