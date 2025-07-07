@@ -5,7 +5,7 @@ import { addProject, displayProjectNames } from "./projectManager";
 
 const btnAddProject = document.getElementById(`add-project`);
 
-// Display project names initally 
+// Display project names initally
 displayProjectNames();
 
 // hanlde the add new project
@@ -29,5 +29,9 @@ btnAddProject.addEventListener("click", () => {
     if (projectName) {
       modalOverlay.classList.remove(`modal-overlay`);
     }
+
+    const prioritySelected = document.getElementById(`priority`).value;
+
+
   });
 });
