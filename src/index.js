@@ -30,7 +30,7 @@ btnAddProject.addEventListener("click", () => {
       modalOverlay.classList.remove(`modal-overlay`);
     }
 
-    const prioritySelected = document.getElementById(`priority`).value;
+    //const prioritySelected = document.getElementById(`priority`).value;
 
 
   });

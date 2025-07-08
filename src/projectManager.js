@@ -45,7 +45,12 @@ function displayProjectNames() {
 
 function addProject(projectTitle) {
   projectList.innerHTML = ``;
-  projects.push(projectTitle);
+  const newProject = {
+    projectID: idGenerator(),
+    projectName: projectTitle,
+    todos: []
+  };
+  projects.push(newProject);
   displayProjectNames();
 }
 
