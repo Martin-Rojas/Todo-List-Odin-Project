@@ -37,7 +37,7 @@ section {
   padding: 1rem;
 }
 
-section i{
+section i {
   cursor: pointer;
   font-size: 2rem;
 }
@@ -47,6 +47,26 @@ main {
   background-color: #e0e7ff; /* Secondary */
   color: #1f2937;
   padding: 2rem;
+}
+
+main .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+main .header button {
+  background-color: #3b82f6; 
+  color: #ffffff; 
+  padding: 0.6rem 1.2rem; 
+  border: none; 
+  border-radius: 6px; 
+  font-size: 1rem; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
+
+main .header button:hover{
+  background-color: #2563EB; 
 }
 
 footer {
