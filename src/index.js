@@ -2,8 +2,15 @@ import "./styles.css";
 import { createProjectModal } from "./ProjectModal";
 import addProjectTitle from "./projectTitlesUI";
 import { addProject, displayProjectNames } from "./projectManager";
+import { createTodo } from "./todoManager";
+import createTodoUI from "./todoUI";
 
 const btnAddProject = document.getElementById(`add-project`);
+//const projectTitle = document.getElementById(``)
+
+// work with todoUI
+createTodoUI();
+// end delete this lines
 
 // Display project names initally
 displayProjectNames();
@@ -32,6 +39,6 @@ btnAddProject.addEventListener("click", () => {
 
     //const prioritySelected = document.getElementById(`priority`).value;
 
-
+    // Link the project with todos
   });
 });

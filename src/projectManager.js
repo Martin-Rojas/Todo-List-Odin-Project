@@ -39,7 +39,7 @@ const projects = [
 
 function displayProjectNames() {
   projects.forEach((project) => {
-    addProjectTitle(project.projectName);
+    addProjectTitle(project);
   });
 }
 
@@ -52,6 +52,11 @@ function addProject(projectTitle) {
   };
   projects.push(newProject);
   displayProjectNames();
+}
+
+/** Read project */
+function readProject(){
+    
 }
 
 /* When the last item in the todo list is delete 
