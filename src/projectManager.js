@@ -3,6 +3,7 @@ import addProjectTitle from "./projectTitlesUI";
 function idGenerator() {
   return Math.random().toString(36).substring(2, 10);
 }
+
 const projectList = document.getElementById(`project-list`);
 const projects = [
   {
@@ -34,7 +35,7 @@ const projects = [
         priority: `high`,
       },
     ],
-  }
+  },
 ];
 
 function displayProjectNames() {
@@ -48,16 +49,14 @@ function addProject(projectTitle) {
   const newProject = {
     projectID: idGenerator(),
     projectName: projectTitle,
-    todos: []
+    todos: [],
   };
   projects.push(newProject);
   displayProjectNames();
 }
 
 /** Read project */
-function readProject(){
-    
-}
+function readProject() {}
 
 /* When the last item in the todo list is delete 
    the project should be delete it*/

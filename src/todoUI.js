@@ -8,13 +8,15 @@ export default function createTodoUI(todoData) {
               ><i class="fa-solid fa-pen"></i>
             </div>
         </div> */
+
+  console.log(todoData);
   const todosContiners = document.getElementById(`todos-containers`);
-  console.log(todosContiners);
+
   const todoItem = document.createElement(`div`);
   todoItem.className = `to-do-item`;
   todosContiners.appendChild(todoItem);
 
   const todoTitle = document.createElement(`p`);
-  todoTitle.innerHTML = "Clean code";
+  todoTitle.innerHTML = `${todoData.title}`;
   todoItem.appendChild(todoTitle);
 }
