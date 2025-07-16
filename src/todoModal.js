@@ -55,11 +55,29 @@ function createTodoModal() {
   labelPriority.innerHTML = `Choose priority: `;
   form.appendChild(labelPriority);
 
-  // Input for priority select
+  // Select element list
   const selectPriority = document.createElement(`select`);
   selectPriority.setAttribute("name", `priority`);
   selectPriority.setAttribute("id", `priority`);
   form.appendChild(selectPriority);
+
+  // Add option high into the select list
+  const selectOptionHigh = document.createElement(`option`);
+  selectOptionHigh.setAttribute(`value`, `high`);
+  selectOptionHigh.innerHTML = `High`;
+  selectPriority.appendChild(selectOptionHigh);
+
+  // Add option medium into select list
+  const selectOptionMedium = document.createElement(`option`);
+  selectOptionMedium.setAttribute(`value`, `Medium`);
+  selectOptionMedium.innerHTML = `Medium`;
+  selectPriority.appendChild(selectOptionMedium);
+
+  // Add option low into select list
+  const selectOptionLow = document.createElement(`option`);
+  selectOptionLow.setAttribute(`value`, `low`);
+  selectOptionLow.innerHTML = `Low`;
+  selectPriority.appendChild(selectOptionLow);
 
   // style my cancel by btns delete and add
   const modalActions = document.createElement(`div`);
