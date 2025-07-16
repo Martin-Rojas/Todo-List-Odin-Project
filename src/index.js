@@ -2,6 +2,7 @@ import "./styles.css";
 import { createProjectModal } from "./ProjectModal";
 import { addProject, displayProjectNames, readProject } from "./projectManager";
 import createTodoUI from "./todoUI";
+import { createTodoModal } from "./todoModal";
 
 const btnAddProject = document.getElementById(`add-project`);
 
@@ -35,6 +36,7 @@ btnAddProject.addEventListener("click", () => {
   });
 });
 
+// Handle todos display for  an specific project
 projectList.addEventListener("click", (e) => {
   if (e.target.classList.contains("project-title")) {
     // set activeProjectID
@@ -49,6 +51,13 @@ projectList.addEventListener("click", (e) => {
     todos.forEach((todo) => {
       createTodoUI(todo);
     });
-    // - add new todos to the right list
   }
+});
+
+// - add new todos to the right list
+const btnAddTodo = document.getElementById(`add-todo`);
+
+btnAddTodo.addEventListener(`click`, () => {
+  createTodoModal();
+  console.log(`it work`);
 });
