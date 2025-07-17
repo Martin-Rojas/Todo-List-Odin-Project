@@ -3,8 +3,10 @@ import { createProjectModal } from "./ProjectModal";
 import { addProject, displayProjectNames, readProject } from "./projectManager";
 import createTodoUI from "./todoUI";
 import { createTodoModal } from "./todoModal";
+import { addTodo } from "./todoManager";
 
 const btnAddProject = document.getElementById(`add-project`);
+let projectID = ``;
 
 // Handle the click of the project titles
 const projectList = document.getElementById(`project-list`);
@@ -40,7 +42,7 @@ btnAddProject.addEventListener("click", () => {
 projectList.addEventListener("click", (e) => {
   if (e.target.classList.contains("project-title")) {
     // set activeProjectID
-    const projectID = e.target.dataset.projectId;
+    projectID = e.target.dataset.projectId;
     console.log("Clicked project ID:", projectID);
 
     // display todos
@@ -57,7 +59,49 @@ projectList.addEventListener("click", (e) => {
 // - add new todos to the right list
 const btnAddTodo = document.getElementById(`add-todo`);
 
+// create random ids
+function idGenerator() {
+  return Math.random().toString(36).substring(2, 10);
+}
+
+// Handle the btn new todo event
 btnAddTodo.addEventListener(`click`, () => {
+  // Show form to create new todo
   createTodoModal();
-  console.log(`it work`);
+
+  // Handel new todo form
+  const newTodoForm = document.getElementById(`todo-form`);
+
+  newTodoForm.addEventListener(`submit`, (event) => {
+    event.preventDefault();
+    // Get values
+    const todoTitle = document.getElementById(`todoTitleInput`).value;
+    const todoDueDate = document.getElementById(`todo-due-date`).value;
+    const todoPriority = document.getElementById(`priority`).value;
+
+    const newTodo = {
+      id: idGenerator(),
+      title: todoTitle,
+      dueDate: todoDueDate,
+      priority: todoPriority,
+    };
+
+    // Add new todo to the todos array
+    addTodo(readProject(projectID).todos, newTodo);
+
+    // Re-display todos
+    const todosItems = document.getElementById(`todos-itmes`);
+    todosItems.innerHTML = "";
+    readProject(projectID).todos.forEach((todo) => {
+      createTodoUI(todo);
+    });
+  });
+
+  // Close the new todo form
+  const closeModalTodo = document.getElementById(`close-modal-todo`);
+  const modalOverlay = document.getElementById(`modal-overlay-todo`);
+
+  closeModalTodo.addEventListener(`click`, () => {
+    modalOverlay.classList.remove(`modal-overlay`);
+  });
 });

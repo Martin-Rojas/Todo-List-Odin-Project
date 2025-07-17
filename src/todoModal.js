@@ -6,7 +6,7 @@ const content = document.getElementById(`content`);
 function createTodoModal() {
   const modalOverlay = document.createElement(`div`);
   modalOverlay.className = `modal-overlay`;
-  modalOverlay.setAttribute(`id`, `modal-overlay`);
+  modalOverlay.setAttribute(`id`, `modal-overlay-todo`);
 
   const divModal = document.createElement(`div`);
   divModal.className = `modal`;
@@ -92,7 +92,7 @@ function createTodoModal() {
 
   // Btn to cancel the creation of new todo
   const btnCancelTodo = document.createElement(`button`);
-  btnCancelTodo.setAttribute("id", `close-modal`);
+  btnCancelTodo.setAttribute("id", `close-modal-todo`);
   btnCancelTodo.setAttribute(`type`, `button`);
   btnCancelTodo.className = `close-modal`;
   btnCancelTodo.innerHTML = `Cancel`;
