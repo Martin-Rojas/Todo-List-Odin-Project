@@ -1,3 +1,5 @@
+import "./todoModal.css";
+
 export default function createTodoUI(todoData) {
   const todosContiners = document.getElementById(`todos-containers`);
   const todosItems = document.getElementById(`todos-itmes`);
@@ -24,13 +26,16 @@ export default function createTodoUI(todoData) {
 
   const viewTodo = document.createElement(`span`);
   viewTodo.innerHTML = `view`;
+  viewTodo.setAttribute("id", `view-todo`);
   todoItemActions.appendChild(viewTodo);
 
   const todoTrashDelete = document.createElement(`i`);
   todoTrashDelete.className = `fa-solid fa-trash`;
+  todoTrashDelete.setAttribute("id", `trash-todo`);
   todoItemActions.appendChild(todoTrashDelete);
 
   const todoTrashEdit = document.createElement(`i`);
   todoTrashEdit.className = `fa-solid fa-pen`;
+  todoTrashEdit.setAttribute("id", `pen-todo`);
   todoItemActions.appendChild(todoTrashEdit);
 }

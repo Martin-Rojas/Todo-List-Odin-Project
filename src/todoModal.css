@@ -1,0 +1,26 @@
+.to-do-item-action {
+  cursor: pointer;
+}
+
+.to-do-item-action span {
+  transition: transform 0.3s ease;
+}
+
+.to-do-item-action span:hover {
+  font-size: 118%;
+}
+
+.to-do-item-action i {
+  margin-right: 1px;
+  transition: transform 0.3s ease;
+}
+
+.to-do-item-action i:hover {
+  font-size: 118%;
+}
+
+#view-todo,
+#pen-todo,
+#trash-todo {
+  margin-right: 3px;
+}

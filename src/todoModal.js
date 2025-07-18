@@ -1,6 +1,5 @@
 import "./ProjectModalStyles.css";
 
-/** Form, */
 const content = document.getElementById(`content`);
 
 function createTodoModal() {
