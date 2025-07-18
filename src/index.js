@@ -69,7 +69,7 @@ btnAddTodo.addEventListener(`click`, () => {
   // Show form to create new todo
   createTodoModal();
 
-  // Handel new todo form
+  // Handle submit new todo form
   const newTodoForm = document.getElementById(`todo-form`);
 
   newTodoForm.addEventListener(`submit`, (event) => {
@@ -86,6 +86,12 @@ btnAddTodo.addEventListener(`click`, () => {
       priority: todoPriority,
     };
 
+    // Remove modal todo after submit it 
+    const modalOverlayTodo = document.getElementById(`modal-overlay-todo`);
+    if (todoTitle && todoDueDate && todoPriority) {
+      modalOverlayTodo.classList.remove(`modal-overlay`);
+    }
+
     // Add new todo to the todos array
     addTodo(readProject(projectID).todos, newTodo);
 
@@ -97,7 +103,7 @@ btnAddTodo.addEventListener(`click`, () => {
     });
   });
 
-  // Close the new todo form
+  // Close the new todo form with btn cancel
   const closeModalTodo = document.getElementById(`close-modal-todo`);
   const modalOverlay = document.getElementById(`modal-overlay-todo`);
 
