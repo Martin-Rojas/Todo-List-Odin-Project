@@ -6,7 +6,7 @@ import { createTodoModal } from "./todoModal";
 import { addTodo, getTodo } from "./todoManager";
 import { createTodoDetails } from "./todoDetails";
 
-createTodoDetails();
+
 
 const btnAddProject = document.getElementById(`add-project`);
 let projectID = ``;
@@ -115,6 +115,7 @@ btnAddTodo.addEventListener(`click`, () => {
   });
 });
 
+// Handle the view span click
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("view-todo")) {
     const todoItemElement = event.target.closest(".to-do-item");
@@ -125,5 +126,7 @@ document.addEventListener("click", (event) => {
     // Now you can look it up from your projects array
     const todo = getTodo(readProject(projectID).todos, todoId);
     console.log("Todo details:", todo);
+
+    createTodoDetails(readProject(projectID).projectName, todo);
   }
 });

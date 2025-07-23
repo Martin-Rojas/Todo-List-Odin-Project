@@ -3,7 +3,8 @@ import "./ProjectModalStyles.css";
 
 const content = document.getElementById(`content`);
 
-function createTodoDetails(projectName, todo) {
+function createTodoDetails(projectName,todo) {
+  console.log(todo);
   const modalOverlay = document.createElement(`div`);
   modalOverlay.className = `modal-overlay`;
   modalOverlay.setAttribute(`id`, `modal-overlay`);
@@ -12,19 +13,19 @@ function createTodoDetails(projectName, todo) {
   divModal.className = `modal`;
 
   const projectNameEl = document.createElement(`h2`);
-  projectNameEl.innerHTML = `Project name: `;
+  projectNameEl.innerHTML = `Project name: ${projectName}`;
   divModal.appendChild(projectNameEl);
 
   const todoTitleEl = document.createElement(`h3`);
-  todoTitleEl.innerHTML = `Todo: `;
+  todoTitleEl.innerHTML = `Todo: ${todo.title}`;
   divModal.appendChild(todoTitleEl);
 
   const dueDateEl = document.createElement(`h3`);
-  dueDateEl.innerHTML = `Due Date: `;
+  dueDateEl.innerHTML = `Due Date: ${todo.dueDate}`;
   divModal.appendChild(dueDateEl);
 
   const priorityEl = document.createElement(`h3`);
-  priorityEl.innerHTML = `Priority: `;
+  priorityEl.innerHTML = `Priority: ${todo.priority}`;
   divModal.appendChild(priorityEl);
 
   // Btn to cancel the modal
@@ -34,7 +35,6 @@ function createTodoDetails(projectName, todo) {
   btnCancelTodoDetails.className = `close-modal`;
   btnCancelTodoDetails.innerHTML = `Cancel`;
   divModal.appendChild(btnCancelTodoDetails);
-
 
   modalOverlay.appendChild(divModal);
   content.parentNode.insertBefore(modalOverlay, content.nextSibling);
