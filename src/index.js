@@ -3,7 +3,10 @@ import { createProjectModal } from "./ProjectModal";
 import { addProject, displayProjectNames, readProject } from "./projectManager";
 import createTodoUI from "./todoUI";
 import { createTodoModal } from "./todoModal";
-import { addTodo } from "./todoManager";
+import { addTodo, getTodo } from "./todoManager";
+import { createTodoDetails } from "./todoDetails";
+
+createTodoDetails();
 
 const btnAddProject = document.getElementById(`add-project`);
 let projectID = ``;
@@ -43,7 +46,6 @@ projectList.addEventListener("click", (e) => {
   if (e.target.classList.contains("project-title")) {
     // set activeProjectID
     projectID = e.target.dataset.projectId;
-    console.log("Clicked project ID:", projectID);
 
     // display todos
     const todos = readProject(projectID).todos;
@@ -51,6 +53,7 @@ projectList.addEventListener("click", (e) => {
     todosItems.innerHTML = ``;
 
     todos.forEach((todo) => {
+      console.log(todo);
       createTodoUI(todo);
     });
   }
@@ -86,7 +89,7 @@ btnAddTodo.addEventListener(`click`, () => {
       priority: todoPriority,
     };
 
-    // Remove modal todo after submit it 
+    // Remove modal todo after submit it
     const modalOverlayTodo = document.getElementById(`modal-overlay-todo`);
     if (todoTitle && todoDueDate && todoPriority) {
       modalOverlayTodo.classList.remove(`modal-overlay`);
@@ -110,4 +113,17 @@ btnAddTodo.addEventListener(`click`, () => {
   closeModalTodo.addEventListener(`click`, () => {
     modalOverlay.classList.remove(`modal-overlay`);
   });
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("view-todo")) {
+    const todoItemElement = event.target.closest(".to-do-item");
+    const todoId = todoItemElement.dataset.todoId;
+
+    console.log("Clicked TODO ID:", todoId);
+
+    // Now you can look it up from your projects array
+    const todo = getTodo(readProject(projectID).todos, todoId);
+    console.log("Todo details:", todo);
+  }
 });

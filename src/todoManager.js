@@ -3,15 +3,17 @@ function addTodo(todos, newtodo) {
   // get project id
   ///console.log(`inside the addTodo ${projectID}`);
   todos.push(newtodo);
-  todos.forEach((todo) => {
-    console.log(todo);
-  });
 }
 
 /** Read  todo */
+function getTodo(todos, todoId) {
+  const currentTodo = todos.find((todo) => todo.id === todoId);
+
+  return currentTodo ? currentTodo : null;
+}
 
 /** Update  todo */
 
 /** Delete todo */
 
-export { addTodo };
+export { addTodo, getTodo };
