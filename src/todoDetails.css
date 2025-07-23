@@ -1,0 +1,30 @@
+/* Modal title and content */
+.modal h2 {
+    font-size: 1.5rem;
+    color: #1E3A8A;
+    margin-bottom: 1rem;
+  }
+  
+  .modal h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #374151;
+  }
+  
+  /* Cancel button */
+  .close-modal {
+    display: block;
+    margin-top: 1.5rem;
+    background-color: #EF4444;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-modal:hover {
+    background-color: #DC2626;
+  }
