@@ -15,5 +15,9 @@ function getTodo(todos, todoId) {
 /** Update  todo */
 
 /** Delete todo */
+function deleteTodoImmutable(project, todoIdToDelete) {
+  // Reassign the array and update it in the original object
+  project.todos = project.todos.filter((todo) => todo.id !== todoIdToDelete);
+}
 
-export { addTodo, getTodo };
+export { addTodo, getTodo, deleteTodoImmutable };

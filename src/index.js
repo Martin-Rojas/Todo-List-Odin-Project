@@ -3,7 +3,7 @@ import { createProjectModal } from "./ProjectModal";
 import { addProject, displayProjectNames, readProject } from "./projectManager";
 import createTodoUI from "./todoUI";
 import { createTodoModal } from "./todoModal";
-import { addTodo, getTodo } from "./todoManager";
+import { addTodo, getTodo, deleteTodoImmutable } from "./todoManager";
 import { createTodoDetails } from "./todoDetails";
 
 const btnAddProject = document.getElementById(`add-project`);
@@ -112,7 +112,7 @@ btnAddTodo.addEventListener(`click`, () => {
   });
 });
 
-// Handle the view span click
+// Handle the view span click using global event delegation
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("view-todo")) {
     const todoItemElement = event.target.closest(".to-do-item");
@@ -134,5 +134,16 @@ document.addEventListener("click", (event) => {
     btnCancelTodoDetails.addEventListener(`click`, () => {
       modalOverlayTodoDetails.classList.remove(`modal-overlay`);
     });
+  } else if (event.target.classList.contains("trash-todo")) {
+    const todoItemElement = event.target.closest(".to-do-item");
+    const todoId = todoItemElement.dataset.todoId;
+    
+    // Remove the todo form the array todos
+    const currentProject = readProject(projectID);
+    deleteTodoImmutable(currentProject, todoId);
+
+    // Re-render
+    document.getElementById("todos-itmes").innerHTML = "";
+    currentProject.todos.forEach((todo) => createTodoUI(todo));
   }
 });
