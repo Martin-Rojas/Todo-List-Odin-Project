@@ -6,8 +6,6 @@ import { createTodoModal } from "./todoModal";
 import { addTodo, getTodo } from "./todoManager";
 import { createTodoDetails } from "./todoDetails";
 
-
-
 const btnAddProject = document.getElementById(`add-project`);
 let projectID = ``;
 
@@ -53,7 +51,6 @@ projectList.addEventListener("click", (e) => {
     todosItems.innerHTML = ``;
 
     todos.forEach((todo) => {
-      console.log(todo);
       createTodoUI(todo);
     });
   }
@@ -121,12 +118,21 @@ document.addEventListener("click", (event) => {
     const todoItemElement = event.target.closest(".to-do-item");
     const todoId = todoItemElement.dataset.todoId;
 
-    console.log("Clicked TODO ID:", todoId);
-
     // Now you can look it up from your projects array
     const todo = getTodo(readProject(projectID).todos, todoId);
-    console.log("Todo details:", todo);
 
     createTodoDetails(readProject(projectID).projectName, todo);
+
+    // Handle the click to close the todo details modal
+    const btnCancelTodoDetails = document.getElementById(
+      `close-modal-todo-details`
+    );
+
+    const modalOverlayTodoDetails = document.getElementById(
+      `modal-overlay-todo-details`
+    );
+    btnCancelTodoDetails.addEventListener(`click`, () => {
+      modalOverlayTodoDetails.classList.remove(`modal-overlay`);
+    });
   }
 });

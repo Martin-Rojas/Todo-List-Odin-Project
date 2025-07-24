@@ -7,7 +7,7 @@ function createTodoDetails(projectName,todo) {
   console.log(todo);
   const modalOverlay = document.createElement(`div`);
   modalOverlay.className = `modal-overlay`;
-  modalOverlay.setAttribute(`id`, `modal-overlay`);
+  modalOverlay.setAttribute(`id`, `modal-overlay-todo-details`);
 
   const divModal = document.createElement(`div`);
   divModal.className = `modal`;
