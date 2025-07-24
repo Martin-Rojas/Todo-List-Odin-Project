@@ -3,8 +3,7 @@ import "./ProjectModalStyles.css";
 
 const content = document.getElementById(`content`);
 
-function createTodoDetails(projectName,todo) {
-  console.log(todo);
+function createTodoDetails(projectName, todo) {
   const modalOverlay = document.createElement(`div`);
   modalOverlay.className = `modal-overlay`;
   modalOverlay.setAttribute(`id`, `modal-overlay-todo-details`);

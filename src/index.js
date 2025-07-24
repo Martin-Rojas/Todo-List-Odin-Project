@@ -5,6 +5,7 @@ import createTodoUI from "./todoUI";
 import { createTodoModal } from "./todoModal";
 import { addTodo, getTodo, deleteTodoImmutable } from "./todoManager";
 import { createTodoDetails } from "./todoDetails";
+import { createEditTodoModal } from "./editTodoModal";
 
 const btnAddProject = document.getElementById(`add-project`);
 let projectID = ``;
@@ -137,7 +138,7 @@ document.addEventListener("click", (event) => {
   } else if (event.target.classList.contains("trash-todo")) {
     const todoItemElement = event.target.closest(".to-do-item");
     const todoId = todoItemElement.dataset.todoId;
-    
+
     // Remove the todo form the array todos
     const currentProject = readProject(projectID);
     deleteTodoImmutable(currentProject, todoId);
@@ -145,5 +146,17 @@ document.addEventListener("click", (event) => {
     // Re-render
     document.getElementById("todos-itmes").innerHTML = "";
     currentProject.todos.forEach((todo) => createTodoUI(todo));
+  } else if (event.target.classList.contains("pen-todo")) {
+    const todoItemElement = event.target.closest(".to-do-item");
+    const todoId = todoItemElement.dataset.todoId;
+
+    // Remove the todo form the array todos
+    const currentProject = readProject(projectID);
+
+    console.log(currentProject);
+    const currentTodo = currentProject.todos.find((todo) => todo.id === todoId);
+    
+    
+    createEditTodoModal(currentTodo);
   }
 });
