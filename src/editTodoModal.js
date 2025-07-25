@@ -30,7 +30,8 @@ function createEditTodoModal(todo) {
   inputTodoTitle.setAttribute(`type`, `text`);
   inputTodoTitle.setAttribute(`id`, `todoTitleInput`);
   inputTodoTitle.setAttribute(`name`, `todoTitleInput`);
-  inputTodoTitle.setAttribute(`placeholder`, `New To-do`);
+  // Prefilled the input
+  inputTodoTitle.value = `${todo.title}`;
   inputTodoTitle.setAttribute(`required`, ``);
   form.appendChild(inputTodoTitle);
 
@@ -42,6 +43,8 @@ function createEditTodoModal(todo) {
 
   // input for due date
   const inputTodoDueDate = document.createElement(`input`);
+  // Prefilled the input
+  inputTodoDueDate.value = `${todo.dueDate}`;
   inputTodoDueDate.setAttribute(`type`, `date`);
   inputTodoDueDate.setAttribute(`id`, `todo-due-date`);
   inputTodoDueDate.setAttribute(`name`, `todo-due-date`);
@@ -68,7 +71,7 @@ function createEditTodoModal(todo) {
 
   // Add option medium into select list
   const selectOptionMedium = document.createElement(`option`);
-  selectOptionMedium.setAttribute(`value`, `Medium`);
+  selectOptionMedium.setAttribute(`value`, `medium`);
   selectOptionMedium.innerHTML = `Medium`;
   selectPriority.appendChild(selectOptionMedium);
 
@@ -77,6 +80,9 @@ function createEditTodoModal(todo) {
   selectOptionLow.setAttribute(`value`, `low`);
   selectOptionLow.innerHTML = `Low`;
   selectPriority.appendChild(selectOptionLow);
+ 
+  // pre-filled the input select
+  selectPriority.value = todo.priority;
 
   // style my cancel by btns delete and add
   const modalActions = document.createElement(`div`);
