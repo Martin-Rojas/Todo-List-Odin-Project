@@ -80,7 +80,7 @@ function createEditTodoModal(todo) {
   selectOptionLow.setAttribute(`value`, `low`);
   selectOptionLow.innerHTML = `Low`;
   selectPriority.appendChild(selectOptionLow);
- 
+
   // pre-filled the input select
   selectPriority.value = todo.priority;
 
@@ -90,10 +90,11 @@ function createEditTodoModal(todo) {
   form.appendChild(modalActions);
 
   // Btn to create a btn to add todo
-  const btnAddTodo = document.createElement(`button`);
-  btnAddTodo.setAttribute(`type`, `submit`);
-  btnAddTodo.innerHTML = `ADD`;
-  modalActions.appendChild(btnAddTodo);
+  const btnEditTodo = document.createElement(`button`);
+  btnEditTodo.setAttribute(`type`, `submit`);
+  btnEditTodo.setAttribute(`id`, `btn-edit-todo`);
+  btnEditTodo.innerHTML = `Edit`;
+  modalActions.appendChild(btnEditTodo);
 
   // Btn to cancel the creation of new todo
   const btnCancelTodo = document.createElement(`button`);

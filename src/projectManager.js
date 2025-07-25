@@ -57,12 +57,20 @@ function addProject(projectTitle) {
 
 /** Read project */
 function readProject(activeProjectID) {
-  const project = projects.find((project) => project.projectID === activeProjectID);
+  const project = projects.find(
+    (project) => project.projectID === activeProjectID
+  );
   return project ? project : null; // returns the name or null if not found
+}
+
+/* Update project*/
+function updateProject(activeProject, activeTodo) {
+  console.log(activeProject);
+  console.log(activeTodo);
 }
 
 /* When the last item in the todo list is delete 
    the project should be delete it*/
 function deleteProject() {}
 
-export { addProject, displayProjectNames, readProject };
+export { addProject, displayProjectNames, readProject, updateProject};

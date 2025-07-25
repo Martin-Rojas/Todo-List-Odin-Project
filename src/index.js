@@ -1,6 +1,11 @@
 import "./styles.css";
 import { createProjectModal } from "./ProjectModal";
-import { addProject, displayProjectNames, readProject } from "./projectManager";
+import {
+  addProject,
+  displayProjectNames,
+  readProject,
+  updateProject,
+} from "./projectManager";
 import createTodoUI from "./todoUI";
 import { createTodoModal } from "./todoModal";
 import { addTodo, getTodo, deleteTodoImmutable } from "./todoManager";
@@ -153,10 +158,36 @@ document.addEventListener("click", (event) => {
     // Remove the todo form the array todos
     const currentProject = readProject(projectID);
 
-    console.log(currentProject);
     const currentTodo = currentProject.todos.find((todo) => todo.id === todoId);
-    
-    
+
     createEditTodoModal(currentTodo);
+
+    const btnSubmitEditForm = document.getElementById(`btn-edit-todo`);
+
+    // Handle the edit submit
+    btnSubmitEditForm.addEventListener(`click`, (event) => {
+      event.preventDefault();
+      // Get values
+      const todoTitle = document.getElementById(`todoTitleInput`).value;
+      const todoDueDate = document.getElementById(`todo-due-date`).value;
+      const todoPriority = document.getElementById(`priority`).value;
+
+      const editTodo = {
+        //id: idGenerator(),
+        title: todoTitle,
+        dueDate: todoDueDate,
+        priority: todoPriority,
+      };
+
+      // Remove modal todo after submit it
+      const modalOverlayTodo = document.getElementById(`modal-overlay-todo`);
+      if (todoTitle && todoDueDate && todoPriority) {
+        modalOverlayTodo.classList.remove(`modal-overlay`);
+      }
+      // Current project
+      const currentProject = readProject(projectID);
+      // resign the todo values with new values
+      updateProject(currentProject, editTodo);
+    });
   }
 });
