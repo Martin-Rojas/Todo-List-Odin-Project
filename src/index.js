@@ -195,7 +195,6 @@ document.addEventListener("click", (event) => {
       // resign the todo values with new values
       updateProject(currentProject, editTodo, todoId);
 
-
       // clean the ui for todos
       const todosItems = document.getElementById(`todos-itmes`);
       todosItems.innerHTML = "";
@@ -203,5 +202,18 @@ document.addEventListener("click", (event) => {
         createTodoUI(todo);
       });
     });
+
+    // Handle the cancel btn to close modal
+      // Close the modal with btn "btn cancel"
+      const btnCancelEditTodo = document.getElementById(
+        `close-modal-todo-edit`
+      );
+      console.log(btnCancelEditTodo);
+
+      btnCancelEditTodo.addEventListener(`click`, () => {
+        const modalOverlayTodo = document.getElementById(`modal-overlay-todo`);
+        modalOverlayTodo.classList.remove(`modal-overlay`);
+        
+      });
   }
 });
