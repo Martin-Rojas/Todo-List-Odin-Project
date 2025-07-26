@@ -64,13 +64,19 @@ function readProject(activeProjectID) {
 }
 
 /* Update project*/
-function updateProject(activeProject, activeTodo) {
-  console.log(activeProject);
-  console.log(activeTodo);
+function updateProject(activeProject, editTodo, idTodo) {
+  //console.log(activeProject);
+  //console.log(activeTodo);
+  //console.log(activeProject.todos.find((todo) => todo.id === idTodo));
+  // Find the todo to be update
+  const updateTodo = activeProject.todos.find((todo) => todo.id === idTodo);
+  updateTodo.title = editTodo.title;
+  updateTodo.dueDate = editTodo.dueDate;
+  updateTodo.priority = editTodo.priority;
 }
 
 /* When the last item in the todo list is delete 
    the project should be delete it*/
 function deleteProject() {}
 
-export { addProject, displayProjectNames, readProject, updateProject};
+export { addProject, displayProjectNames, readProject, updateProject };

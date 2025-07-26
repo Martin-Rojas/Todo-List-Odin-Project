@@ -166,7 +166,13 @@ document.addEventListener("click", (event) => {
 
     // Handle the edit submit
     btnSubmitEditForm.addEventListener(`click`, (event) => {
+      // Prevent the page to reload
       event.preventDefault();
+
+      // get the id of the current todo
+      const todoId = todoItemElement.dataset.todoId;
+      console.log(` im the current todoID = ${todoId}`);
+
       // Get values
       const todoTitle = document.getElementById(`todoTitleInput`).value;
       const todoDueDate = document.getElementById(`todo-due-date`).value;
@@ -187,7 +193,15 @@ document.addEventListener("click", (event) => {
       // Current project
       const currentProject = readProject(projectID);
       // resign the todo values with new values
-      updateProject(currentProject, editTodo);
+      updateProject(currentProject, editTodo, todoId);
+
+
+      // clean the ui for todos
+      const todosItems = document.getElementById(`todos-itmes`);
+      todosItems.innerHTML = "";
+      readProject(projectID).todos.forEach((todo) => {
+        createTodoUI(todo);
+      });
     });
   }
 });
