@@ -1,7 +1,6 @@
 import "./todoModal.css";
 
 export default function createTodoUI(todoData) {
-  console.log(`${todoData.id}`);
   const todosContiners = document.getElementById(`todos-containers`);
   const todosItems = document.getElementById(`todos-itmes`);
 

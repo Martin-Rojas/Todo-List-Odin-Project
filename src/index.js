@@ -5,6 +5,7 @@ import {
   displayProjectNames,
   readProject,
   updateProject,
+  deleteProject,
 } from "./projectManager";
 import createTodoUI from "./todoUI";
 import { createTodoModal } from "./todoModal";
@@ -148,6 +149,15 @@ document.addEventListener("click", (event) => {
     const currentProject = readProject(projectID);
     deleteTodoImmutable(currentProject, todoId);
 
+    // If no more todos, delete the entire project
+    if (currentProject.todos.length === 0) {
+      deleteProject(currentProject);
+      projectList.innerHTML = ``;
+      displayProjectNames(); // Update the UI
+      document.getElementById("todos-itmes").innerHTML = "";
+      return;
+    }
+
     // Re-render
     document.getElementById("todos-itmes").innerHTML = "";
     currentProject.todos.forEach((todo) => createTodoUI(todo));
@@ -171,7 +181,6 @@ document.addEventListener("click", (event) => {
 
       // get the id of the current todo
       const todoId = todoItemElement.dataset.todoId;
-      console.log(` im the current todoID = ${todoId}`);
 
       // Get values
       const todoTitle = document.getElementById(`todoTitleInput`).value;
@@ -204,16 +213,12 @@ document.addEventListener("click", (event) => {
     });
 
     // Handle the cancel btn to close modal
-      // Close the modal with btn "btn cancel"
-      const btnCancelEditTodo = document.getElementById(
-        `close-modal-todo-edit`
-      );
-      console.log(btnCancelEditTodo);
+    // Close the modal with btn "btn cancel"
+    const btnCancelEditTodo = document.getElementById(`close-modal-todo-edit`);
 
-      btnCancelEditTodo.addEventListener(`click`, () => {
-        const modalOverlayTodo = document.getElementById(`modal-overlay-todo`);
-        modalOverlayTodo.classList.remove(`modal-overlay`);
-        
-      });
+    btnCancelEditTodo.addEventListener(`click`, () => {
+      const modalOverlayTodo = document.getElementById(`modal-overlay-todo`);
+      modalOverlayTodo.classList.remove(`modal-overlay`);
+    });
   }
 });

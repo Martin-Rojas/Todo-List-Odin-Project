@@ -5,7 +5,7 @@ function idGenerator() {
 }
 
 const projectList = document.getElementById(`project-list`);
-const projects = [
+let projects = [
   {
     projectID: idGenerator(),
     projectName: `Web-App`,
@@ -65,9 +65,6 @@ function readProject(activeProjectID) {
 
 /* Update project*/
 function updateProject(activeProject, editTodo, idTodo) {
-  //console.log(activeProject);
-  //console.log(activeTodo);
-  //console.log(activeProject.todos.find((todo) => todo.id === idTodo));
   // Find the todo to be update
   const updateTodo = activeProject.todos.find((todo) => todo.id === idTodo);
   updateTodo.title = editTodo.title;
@@ -77,6 +74,16 @@ function updateProject(activeProject, editTodo, idTodo) {
 
 /* When the last item in the todo list is delete 
    the project should be delete it*/
-function deleteProject() {}
+function deleteProject(activeProject) {
+  projects = projects.filter(
+    (project) => project.projectID !== activeProject.projectID
+  );
+}
 
-export { addProject, displayProjectNames, readProject, updateProject };
+export {
+  addProject,
+  displayProjectNames,
+  readProject,
+  updateProject,
+  deleteProject,
+};

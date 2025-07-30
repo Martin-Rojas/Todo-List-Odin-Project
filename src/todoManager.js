@@ -1,7 +1,6 @@
 /** Create a new todo */
 function addTodo(todos, newtodo) {
   // get project id
-  ///console.log(`inside the addTodo ${projectID}`);
   todos.push(newtodo);
 }
 
