@@ -5,6 +5,7 @@ function idGenerator() {
 }
 
 const projectList = document.getElementById(`project-list`);
+
 let projects = [
   {
     projectID: idGenerator(),
@@ -38,7 +39,14 @@ let projects = [
   },
 ];
 
+// Save the projects array to LocalStorage
+function saveToLocalStorage() {
+  localStorage.setItem("todoProjects", JSON.stringify(projects));
+}
+
 function displayProjectNames() {
+  let projects = JSON.parse(localStorage.getItem(`todoProjects`));
+  console.log(projects);
   projects.forEach((project) => {
     addProjectTitle(project);
   });
@@ -52,11 +60,14 @@ function addProject(projectTitle) {
     todos: [],
   };
   projects.push(newProject);
+  saveToLocalStorage();
   displayProjectNames();
 }
 
 /** Read project */
 function readProject(activeProjectID) {
+  // get the projects from the localStorage
+  let projects = JSON.parse(localStorage.getItem(`todoProjects`));
   const project = projects.find(
     (project) => project.projectID === activeProjectID
   );
@@ -65,11 +76,13 @@ function readProject(activeProjectID) {
 
 /* Update project*/
 function updateProject(activeProject, editTodo, idTodo) {
+  // Find the active project
   // Find the todo to be update
   const updateTodo = activeProject.todos.find((todo) => todo.id === idTodo);
   updateTodo.title = editTodo.title;
   updateTodo.dueDate = editTodo.dueDate;
   updateTodo.priority = editTodo.priority;
+  saveToLocalStorage();
 }
 
 /* When the last item in the todo list is delete 
