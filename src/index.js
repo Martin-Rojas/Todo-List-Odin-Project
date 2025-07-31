@@ -201,13 +201,15 @@ document.addEventListener("click", (event) => {
       }
       // Current project
       const currentProject = readProject(projectID);
+
       // resign the todo values with new values
       updateProject(currentProject, editTodo, todoId);
 
       // clean the ui for todos
       const todosItems = document.getElementById(`todos-itmes`);
       todosItems.innerHTML = "";
-      readProject(projectID).todos.forEach((todo) => {
+
+      currentProject.todos.forEach((todo) => {
         createTodoUI(todo);
       });
     });
