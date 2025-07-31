@@ -1,4 +1,4 @@
-import addProjectTitle from "./projectTitlesUI";
+import { addProjectTitle, getProjectsUI } from "./projectTitlesUI";
 
 function loadFromLocalStorage() {
   const storedProjects = localStorage.getItem("todoProjects");
@@ -16,8 +16,6 @@ let projects = loadFromLocalStorage();
 function idGenerator() {
   return Math.random().toString(36).substring(2, 10);
 }
-
-const projectList = document.getElementById(`project-list`);
 
 // let projects = [
 //   {
@@ -64,7 +62,8 @@ function displayProjectNames() {
 }
 
 function addProject(projectTitle) {
-  projectList.innerHTML = ``;
+  //projectList.innerHTML = ``;
+  getProjectsUI();
   const newProject = {
     projectID: idGenerator(),
     projectName: projectTitle,
